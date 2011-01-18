@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  password_hash: MyString
+  private: false
+  last_active: 2011-01-18 14:46:04
+  tracks_json: MyText
+
+two:
+  name: MyString
+  password_hash: MyString
+  private: false
+  last_active: 2011-01-18 14:46:04
+  tracks_json: MyText
