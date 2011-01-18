@@ -8,6 +8,10 @@ gem 'rails', '3.0.2'
 gem 'mysql2'
 gem 'pusher'
 
+gem "shoulda"
+gem "factory_girl"
+gem "rails3-generators", :group => :development
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
