@@ -21,6 +21,7 @@ module Podloko
     config.generators do |g|  
       g.stylesheets false  
       g.test_framework :shoulda  
+      g.fallbacks[:shoulda] = :test_unit
       g.fixture_replacement :factory_girl  
     end
     # Activate observers that should always be running.

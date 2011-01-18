@@ -1,5 +1,12 @@
 Podloko::Application.routes.draw do
   
+  resources :rooms, :only => [:index, :show] do
+    member do
+      get :ping
+      post :update_library
+    end
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
