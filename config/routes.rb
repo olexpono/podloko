@@ -1,7 +1,8 @@
 Podloko::Application.routes.draw do
-  
-  resources :rooms, :only => [:index, :show] do
+  root :to => "rooms#index"
+  resources :rooms, :only => [:show] do
     member do
+      get :claim
       get :ping
       post :update_library
     end

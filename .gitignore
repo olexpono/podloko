@@ -1,3 +1,4 @@
+db/schema.rb
 .bundle
 Gemfile.lock
 db/*.sqlite3
