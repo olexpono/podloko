@@ -1,0 +1,55 @@
+div#content {
+  margin: 0 auto;
+  max-width: 956px;
+  min-width: 500px;
+}
+
+ul, li {
+  list-style: none;
+}
+
+h1, h2, h3 {
+  font-family: 'Ubuntu';
+  font-size: 40px;
+  color: #10d0f6;
+}
+
+h1 {
+  font-size: 52px;
+}
+
+div#content li {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px 0px;
+  background: #bdf;
+  -moz-box-shadow: 0px 0px 4px #225; 
+  -webkit-box-shadow: 0px 0px 4px #225; 
+  box-shadow: 0px 0px 4px #225; 
+  
+  background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0, rgb(20, 210,250)),
+    color-stop(0.84, rgb(83,217,217)));
+  background-image: -moz-linear-gradient(
+    center bottom,
+    rgb(20,210,250) 0%,
+    rgb(83,217,217) 84%);
+
+}
+div#content li span,
+div#content li em {
+  font-family: 'Ubuntu';
+  font-size: 16px;
+  margin: 0px 10px;
+);
+  
+}
+div#content li span.room_id {
+  font-weight: 700;
+}
+div#content li em {
+  font-size: 13px;
+}

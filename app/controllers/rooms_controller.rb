@@ -2,6 +2,7 @@ class RoomsController < ApplicationController
   ### ACCESSED VIA BROWSER (HTML) ###
   # index of the site / shows available rooms
   def index
+    @rooms = Room.order("updated_at DESC").limit(10)
   end
 
   # shows the currently available songs from a given room's ipod
