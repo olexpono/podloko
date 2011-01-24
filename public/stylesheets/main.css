@@ -21,6 +21,7 @@ h1 {
 div#content li {
   border: 1px solid #ccc;
   border-radius: 10px;
+  margin: 10px 0px;
   padding: 10px 0px;
   background: #bdf;
   -moz-box-shadow: 0px 0px 4px #225; 
@@ -32,11 +33,11 @@ div#content li {
     left bottom,
     left top,
     color-stop(0, rgb(20, 210,250)),
-    color-stop(0.84, rgb(83,217,217)));
+    color-stop(0.84, rgb(80,225,255)));
   background-image: -moz-linear-gradient(
     center bottom,
     rgb(20,210,250) 0%,
-    rgb(83,217,217) 84%);
+    rgb(80,225,255) 84%);
 
 }
 div#content li span,

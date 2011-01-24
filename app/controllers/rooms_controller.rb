@@ -19,13 +19,13 @@ class RoomsController < ApplicationController
   end
   
   def claim
-    @room = Room.find(params[:id])
+    @room = Room.exists?(params[:id]) ? Room.find(params[:id]) : nil
     password_hash = nil
     message = ""
     if params.has_key?(:password)
       password_hash = Digest::SHA2.hexdigest(params[:password]) 
     end
-    unless @room 
+    unless @room
       @room = Room.create(:id => params[:id], :password_hash => password_hash)
       message << "New Room Created. "
     end
