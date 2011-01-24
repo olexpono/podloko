@@ -5,6 +5,7 @@ Podloko::Application.routes.draw do
       get :claim
       get :ping
       post :update_library
+      get :request_library_update
     end
   end
 

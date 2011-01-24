@@ -10,6 +10,14 @@ class RoomsController < ApplicationController
     @room = Room.find(params[:id])
   end
 
+  def request_library_update
+    @room = Room.find_by_name(params[:id])
+    if @room
+      Pusher[@room.name].trigger('update_library', {:message => "nil"})
+    end
+    render :text => {"success" => !@room.nil?}.to_json
+  end
+
   ### ACCESSED VIA PHONE (API) ###
   skip_before_filter :verify_authenticity_token, 
                 :only => [:ping, :update_library]
@@ -19,14 +27,14 @@ class RoomsController < ApplicationController
   end
   
   def claim
-    @room = Room.exists?(params[:id]) ? Room.find(params[:id]) : nil
+    @room = Room.taken?(params[:id]) ? Room.find_by_name(params[:id]) : nil
     password_hash = nil
     message = ""
     if params.has_key?(:password)
       password_hash = Digest::SHA2.hexdigest(params[:password]) 
     end
     unless @room
-      @room = Room.create(:id => params[:id], :password_hash => password_hash)
+      @room = Room.create(:name => params[:id], :password_hash => password_hash)
       message << "New Room Created. "
     end
     if @room.last_active < 3.hours.ago
@@ -40,7 +48,7 @@ class RoomsController < ApplicationController
 
   # POST from the phone with ipod library (query result)
   def update_library
-    @room = Room.find(params[:id])
+    @room = Room.find_by_name(params[:id])
     json = ActiveSupport::Base64.decode64 params[:library]
     library_list = ActiveSupport::JSON.decode json
     
