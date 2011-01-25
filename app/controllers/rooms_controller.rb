@@ -8,6 +8,11 @@ class RoomsController < ApplicationController
   # shows the currently available songs from a given room's ipod
   def show
     @room = Room.find_by_name(params[:id])
+    @room_tracks = ActiveSupport::JSON.decode Room.tracks_json
+    respond_to do |wants|
+      wants.html
+      wants.json { render :text => @room.to_json }
+    end
   end
 
   def request_library_update
@@ -16,7 +21,17 @@ class RoomsController < ApplicationController
       Pusher[@room.name].trigger('update_library', {:message => "nil"})
     end
     flash[:notice] = "Fetching Library from iPod, check back in 10 seconds!"
-    render :action => :show and return
+    redirect_to :action => :show
+  end
+
+  def play_on_ipod
+    @album = params[:album]
+    @room = Room.find_by_name(params[:id])
+    if @room
+      Pusher[@room.name].trigger('play', {:album => @query})
+    end
+    flash[:notice] = "Playing #{@album} on iPod"
+    redirect_to :action => :show
   end
 
   ### ACCESSED VIA PHONE (API) ###
@@ -55,7 +70,7 @@ class RoomsController < ApplicationController
     
     @room.update_attribute(:tracks_json, json)
     # puts " ---- JSON FROM PHONE ----\n\n#{json}\n\n"
-    render :text => {"success" => false}.to_json
+    render :text => {"success" => true}.to_json
   end
 
 end
