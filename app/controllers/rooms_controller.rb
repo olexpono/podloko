@@ -15,7 +15,8 @@ class RoomsController < ApplicationController
     if @room
       Pusher[@room.name].trigger('update_library', {:message => "nil"})
     end
-    render :text => {"success" => !@room.nil?}.to_json
+    flash[:notice] = "Fetching Library from iPod, check back in 10 seconds!"
+    show
   end
 
   ### ACCESSED VIA PHONE (API) ###
