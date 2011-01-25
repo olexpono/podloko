@@ -7,7 +7,7 @@ class RoomsController < ApplicationController
 
   # shows the currently available songs from a given room's ipod
   def show
-    @room = Room.find(params[:id])
+    @room = Room.find_by_name(params[:id])
   end
 
   def request_library_update
