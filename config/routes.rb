@@ -6,12 +6,9 @@ Podloko::Application.routes.draw do
       get :ping
       post :update_library
       get :request_library_update
+      get :play_on_ipod
     end
   end
-  
-  match "rooms/:id/play_on_ipod",
-     :to => "rooms#play_on_ipod",
-     :via => :get
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
