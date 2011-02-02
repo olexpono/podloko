@@ -2,12 +2,12 @@
 <h1>PodLoko</h1>
 <ul>
   <% @rooms.each do |room| %>
+        <a href="<%= room_path(room)%>">
       <li>
         <span class="room_id"><%= room.id %></span>
-        <a href="<%= room_path(room)%>">
         <span class="room_name"><%= room.name ||"Unnamed" %></span>
-    </a>
         <em> - last active: <%= room.last_active.strftime "%H:%M %p on %A" %></em>
       </li>
+    </a>
   <% end %>
 </ul>

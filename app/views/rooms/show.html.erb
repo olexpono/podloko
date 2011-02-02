@@ -4,7 +4,10 @@
 <p><%= @room.tracks_json %></p>
 <dl class="albums">
   <% @room_tracks.each do |album| %>
-    <dt><%= playable_album_name(@room, album) %></dt>
-    
+    <dt><%= playable_album_name(@room, album) %>
+      <% album["tracks"].each_with_index do |track_title, ind| %>
+        <dd><%= ind + 1 %> - <%= track_title %></dd>
+      <% end %>
+    </dt>
   <% end %>
 </dl>
