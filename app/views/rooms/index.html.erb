@@ -1,6 +1,6 @@
 <%= content_for :title, "PodLoko - Web iPod Controller" %>
 <h1>PodLoko</h1>
-<ul>
+<ul class="rooms">
   <% @rooms.each do |room| %>
         <a href="<%= room_path(room)%>">
       <li>

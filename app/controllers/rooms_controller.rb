@@ -23,8 +23,17 @@ class RoomsController < ApplicationController
     flash[:notice] = "Fetching Library from iPod, check back in 10 seconds!"
     redirect_to :action => :show
   end
+  
+  def stop
+    @room = Room.find_by_name(params[:id])
+    if @room
+      Pusher[@room.name].trigger('stop', [])
+    end
+    flash[:notice] = "Stopping iPod."
+    redirect_to :action => :show
+  end
 
-  def play_on_ipod
+  def play
     @album = params[:album]
     @room = Room.find_by_name(params[:id])
     if @room

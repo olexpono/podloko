@@ -7,6 +7,6 @@ module RoomsHelper
 
   def playable_album_name(room, album)
     link_to "#{album["album_artist"]} - #{album["album_name"]}",
-            "#{room.to_param}/play_on_ipod?#{album["album_name"].to_query "album"}"
+            "#{room.to_param}/play?#{album["album_name"].to_query "album"}"
   end
 end

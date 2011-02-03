@@ -1,6 +1,13 @@
 <% content_for :title, "#{@room.name} | PodLoko iPod Control" %>
 <h1>Room <%= @room.name %></h1>
-<strong><%= link_to "Update Library", request_library_update_room_path(@room) %></strong>
+<ul class="controls">
+  <%= link_to request_library_update_room_path(@room) do %>
+    <li>Update Library</li>
+  <% end %>
+  <%= link_to stop_room_path(@room) do %>
+    <li>Stop Playback</li>
+  <% end %>
+</ul>
 <p><%= @room.tracks_json %></p>
 <dl class="albums">
   <% @room_tracks.each do |album| %>

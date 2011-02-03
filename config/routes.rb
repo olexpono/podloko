@@ -6,7 +6,8 @@ Podloko::Application.routes.draw do
       get :ping
       post :update_library
       get :request_library_update
-      get :play_on_ipod
+      get :play
+      get :stop
     end
   end
 

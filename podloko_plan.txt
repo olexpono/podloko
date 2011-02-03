@@ -1,0 +1,77 @@
+     iOS Lib                          Obj.C interface                             Ridin' Rails                            API
+   IpodLibrary                        PodKontrolBase                              PodKontrolWeb                    Pusher API/Servers
+                                        App Start ------> GET rooms/:id/claim ---> [check pass]
+                                       [ success? ] <---- response           <--- [or make new]
+                                       prompt & retry          <----->
+
+                                      With Room Name ----------------------------------------> subscribePusher -->[new socket & chan]
+
+                                      Active Room Ping -> rooms/:id/ping  ---> [ OK|RENEW ]
+                                                          + Cur. Playlist 
+
+                                                                             ++ USER accesses ROOM ++
+                                                                                if cache miss --- room name lib request --->|
+                                      [ open lib ] <----- iPod Library Query -----------------------------------------------|
+        |<--------- Query      <----- [ create query ]
+        |---------> Library    -----> ------ | ---------> JSON of Library -------> [update room]
+
+
+                                                                              ++ USER picks MUSIC ++
+                                                                              rooms/:id/play?args ---------------------->|
+                                      [play playlist] <-- Pusher "play" event ----------------------------------------------|
+
+
+Obj.C
+
+claimRoom(name, pass)
+activeRoomPing(name, currentPlayingInfo)
+subscribePusher(channelName?)
+pusherDidRequestLibrary(name, query)
+playQuery(song ids)
+
+
+RAILS / AJAX / JSON calls
+  song_json = {"artist" => "Air",
+               "title" => "Be a Bee",
+               "album" => "Robot Rock"}
+/  #=> rooms#index
+rooms/:id/claim
+  response: {"success" => 0/1, "message" => ""}
+rooms/:id/play
+  args = ?artist=&album=&title=
+rooms/:id/stop
+rooms/:id/ping
+  saves a json playlist, fmt:
+    {"state" => "playing",
+     "current_song" => {song},
+     "current_queue"=> [{song},{song},...]}
+  response: {"success" => 0/1}
+rooms/:id/update_library [POST from phone]
+  args = library=(B64 encode of library in JSON)
+
+rooms/:id/request_library_update
+rooms/:id   					=> rooms#show
+rooms/:id.json              => rooms#show
+  response: {"state" => "playing",       # out of ["playing", "stopped", "paused", "ffw", "rewind"]
+             "current_song" => {song},
+             "current_queue"=> [{song},{song},...]}
+
+
+
+=============== pusher channels
+
+/rooms/id
+events:
+
+event_name
+  {"arg1" => "val1",
+   "arg2" => "val2"}
+
+play
+  {"track" => "",
+   "album" => "Moon Safari",
+   "artist" => "Led Zeppelin"}
+  # queries based on track if query exists, 
+  # then album if exists, 
+  # then artist if exists, 
+  # otherwise shuffles whole library.

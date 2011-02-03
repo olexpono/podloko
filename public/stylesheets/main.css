@@ -23,8 +23,8 @@ h1 {
   font-size: 52px;
 }
 
-div#content li {
-  border: 1px solid #ccc;
+ul.rooms li {
+  border: 1px solid #C7E0D1;
   border-radius: 10px;
   margin: 10px 0px;
   padding: 10px 0px;
@@ -45,19 +45,32 @@ div#content li {
     rgb(80,225,255) 84%);
   */
 }
-div#content li span,
-div#content li em {
+ul.rooms li span,
+ul.rooms li em {
   font-family: 'Ubuntu';
   font-size: 16px;
   margin: 0px 10px;
 );
   
 }
-div#content li span.room_id {
+ul.rooms li span.room_id {
   font-weight: 700;
 }
-div#content li em {
+ul.rooms li em {
   font-size: 13px;
+}
+
+ul.controls li {
+  display: inline-block;
+  border: 1px solid #C7E0D1;
+  border-radius: 10px;
+  margin: 10px 0px;
+  padding: 10px 10px;
+  background: #292621;
+  -moz-box-shadow: 0px 0px 4px #225; 
+  -webkit-box-shadow: 0px 0px 4px #225; 
+  box-shadow: 0px 0px 4px #225; 
+  color: #C7E0D1;
 }
 
 body {
