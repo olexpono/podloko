@@ -10,10 +10,11 @@
 </ul>
 <dl class="albums">
   <% @room_tracks.each do |album| %>
-    <dt><%= playable_album_name(@room, album) %>
+    <div class="album">
+      <dt><%= playable_album_name(@room, album) %></dt>
       <% album["song_titles"].each_with_index do |song_title, ind| %>
         <dd><%= ind + 1 %> - <%= song_title %></dd>
       <% end %>
-    </dt>
+    </div>
   <% end %>
 </dl>

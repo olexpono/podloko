@@ -1,5 +1,5 @@
 div#content {
-  margin: 0 auto;
+  margin: 10px auto;
   max-width: 956px;
   min-width: 500px;
 }
@@ -72,9 +72,11 @@ ul.controls li {
   -webkit-box-shadow: 0px 0px 4px #225; 
   box-shadow: 0px 0px 4px #225; 
   color: #C7E0D1;
+  font-family: 'Ubuntu';
+  font-size: 14px;
 }
 
-dl.albums {
+div.album {
   border: 1px solid #C7E0D1;
   border-radius: 10px;
   margin: 10px 0px;
@@ -84,7 +86,16 @@ dl.albums {
   -webkit-box-shadow: 0px 0px 4px #225; 
   box-shadow: 0px 0px 4px #225; 
   color: #C7E0D1;
-
+}
+div.album dt {
+  font-size: 16px;
+  font-family: 'Ubuntu';
+  margin-bottom: 10px;
+}
+div.album dd {
+  margin-bottom: 1px;
+  font-family: 'Ubuntu';
+  padding: 0 0 0 10px;
 }
 
 body {
