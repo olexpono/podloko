@@ -8,7 +8,6 @@
     <li>Stop Playback</li>
   <% end %>
 </ul>
-<p><%= @room.tracks_json %></p>
 <dl class="albums">
   <% @room_tracks.each do |album| %>
     <dt><%= playable_album_name(@room, album) %>

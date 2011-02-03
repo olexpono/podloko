@@ -52,6 +52,7 @@ ul.rooms li em {
   margin: 0px 10px;
 );
   
+
 }
 ul.rooms li span.room_id {
   font-weight: 700;
@@ -71,6 +72,19 @@ ul.controls li {
   -webkit-box-shadow: 0px 0px 4px #225; 
   box-shadow: 0px 0px 4px #225; 
   color: #C7E0D1;
+}
+
+dl.albums {
+  border: 1px solid #C7E0D1;
+  border-radius: 10px;
+  margin: 10px 0px;
+  padding: 10px 10px;
+  background: #292621;
+  -moz-box-shadow: 0px 0px 4px #225; 
+  -webkit-box-shadow: 0px 0px 4px #225; 
+  box-shadow: 0px 0px 4px #225; 
+  color: #C7E0D1;
+
 }
 
 body {
