@@ -1,0 +1,31 @@
+Track
+
+{ title : "Around the World",
+  time : (04:02),
+  artist: "Daft Punk",
+  album : "Discovery",
+  persistent_id : "base64iThinkJFoie230589dnvNDojefk23nroHohj029hsdfJO"
+}
+
+Music Player
+(iPod Music Player equivalent on iPhone)
+(this is a backbone.js model)
+(rewind / ffw can be added on when needed)
+
+{ now_playing_item : (Track),
+  current_playback_time : (02:12),
+  volume : (1-100),
+  playback_queue: (Track Array),
+  shuffle : (true/false),
+  repeat : (true/false),
+  playbackState : (playing/paused/stopped),
+  play() : function,
+  pause(): function,
+  stopPlayback() : function,
+  previousTrack() : function,
+  nextTrack() : function
+}
+
+Library
+
+[ Track collection ? -- should be sortable / filterable ]

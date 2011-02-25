@@ -35,7 +35,10 @@ RAILS / AJAX / JSON calls
                "title" => "Be a Bee",
                "album" => "Robot Rock"}
 /  #=> rooms#index
-rooms/:id/claim
+POST rooms/claim
+  args: room_data=b64encodeOfJSON
+        {"name":"Bob's Great Room",
+         "password":"somepass"}
   response: {"success" => 0/1, "message" => ""}
 rooms/:id/play
   args = ?artist=&album=&title=
