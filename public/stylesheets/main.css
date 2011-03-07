@@ -16,7 +16,8 @@ ul, li {
 h1, h2, h3 {
   font-family: 'Ubuntu';
   font-size: 40px;
-  color: #E5DEA5;
+  color: #EA4;
+  text-shadow: inset rgba(0,0,0,0.3) -1px -2px;  
 }
 
 h1 {
@@ -24,15 +25,15 @@ h1 {
 }
 
 ul.rooms li {
-  border: 1px solid #C7E0D1;
+  border: 1px solid #EA4;
   border-radius: 10px;
   margin: 10px 0px;
   padding: 10px 0px;
-  background: #292621;
+  background: #222;
   -moz-box-shadow: 0px 0px 4px #225; 
   -webkit-box-shadow: 0px 0px 4px #225; 
   box-shadow: 0px 0px 4px #225; 
-  color: #C7E0D1;
+  color: #EA4;
   /*background-image: -webkit-gradient(
     linear,
     left bottom,
@@ -50,9 +51,6 @@ ul.rooms li em {
   font-family: 'Ubuntu';
   font-size: 16px;
   margin: 0px 10px;
-);
-  
-
 }
 ul.rooms li span.room_id {
   font-weight: 700;
@@ -63,29 +61,29 @@ ul.rooms li em {
 
 ul.controls li {
   display: inline-block;
-  border: 1px solid #C7E0D1;
+  border: 1px solid #EA4;
   border-radius: 10px;
   margin: 10px 0px;
   padding: 10px 10px;
-  background: #292621;
+  background: #222;
   -moz-box-shadow: 0px 0px 4px #225; 
   -webkit-box-shadow: 0px 0px 4px #225; 
   box-shadow: 0px 0px 4px #225; 
-  color: #C7E0D1;
+  color: #EA4;
   font-family: 'Ubuntu';
   font-size: 14px;
 }
 
 div.album {
-  border: 1px solid #C7E0D1;
+  border: 1px solid #EA4;
   border-radius: 10px;
   margin: 10px 0px;
   padding: 10px 10px;
-  background: #292621;
+  background: #222;
   -moz-box-shadow: 0px 0px 4px #225; 
   -webkit-box-shadow: 0px 0px 4px #225; 
   box-shadow: 0px 0px 4px #225; 
-  color: #C7E0D1;
+  color: #EA4;
 }
 div.album dt {
   font-size: 16px;
@@ -99,5 +97,5 @@ div.album dd {
 }
 
 body {
-  background: #454A40;
+  background: #444;
 }

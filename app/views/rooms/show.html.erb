@@ -1,4 +1,11 @@
 <% content_for :title, "#{@room.name} | PodLoko iPod Control" %>
+<%= javascript_tag :defer => 'defer' do %>
+  var pusher = new Pusher('58b48fb1e1b958165a91');
+  var channel = pusher.subscribe('willowtree');
+  channel.bind('stop', function(data) {
+    alert(data);
+  });
+<% end %>
 <h1>Room <%= @room.name %></h1>
 <ul class="controls">
   <%= link_to request_library_update_room_path(@room) do %>
