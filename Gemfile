@@ -12,6 +12,8 @@ gem "shoulda"
 gem "factory_girl"
 gem "rails3-generators", :group => :development
 
+gem "jquery-rails"
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
