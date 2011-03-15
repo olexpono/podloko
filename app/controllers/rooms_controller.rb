@@ -78,7 +78,7 @@ class RoomsController < ApplicationController
     library_list = ActiveSupport::JSON.decode json
     
     @room.update_attribute(:tracks_json, json)
-    Rails.log("Room #{@room.name} ---- JSON FROM PHONE ----\n\n#{json}\n\n")
+    Rails.logger.info("Room #{@room.name} ---- JSON FROM PHONE ----\n\n#{json}\n\n")
     render :text => {"success" => true}.to_json
   end
 
