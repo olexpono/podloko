@@ -5,6 +5,11 @@
   channel.bind('stop', function(data) {
     alert(data);
   });
+  $(document).ready(function() 
+    { 
+        $("#library").tablesorter( {sortList: [[0,0], [1,0]]} ); 
+    } 
+  );
 <% end %>
 <h1>Room <%= @room.name %></h1>
 <ul class="controls">
@@ -15,13 +20,23 @@
     <li>Stop Playback</li>
   <% end %>
 </ul>
-<dl class="albums">
-  <% @room_tracks.each do |album| %>
-    <div class="album">
-      <dt><%= playable_album_name(@room, album) %></dt>
-      <% album["song_titles"].each_with_index do |song_title, ind| %>
-        <dd><%= ind + 1 %> - <%= song_title %></dd>
-      <% end %>
-    </div>
+<table id="library" class="tablesorter">
+<thead>
+  <tr>
+    <th>Artist</th>
+    <th>Album</th>
+    <th>Name</th>
+    <th>Time</th>
+  </tr>
+</thead>
+<tbody id="library-body">
+  <% @room_tracks.each do |thash| %>
+    <tr>
+      <td><%= thash["artist"] %></td>
+      <td><%= thash["album"] %></td>
+      <td><%= thash["title"] %></td>
+      <td><%= thash["duration"] %></td>
+    </tr>
   <% end %>
-</dl>
+</tbody>
+</table>
