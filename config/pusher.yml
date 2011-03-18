@@ -7,9 +7,9 @@ development:
   key: 58b48fb1e1b958165a91
   secret: 0a654821e470603526e2
 production:
-  app_id: 3696
-  key: b5a56d1fa98331de255c
-  secret: 56dbb3a4239df11cfcb0
+  app_id: 3795
+  key: 58b48fb1e1b958165a91
+  secret: 0a654821e470603526e2
 future_production:
   app_id: 3795
   key: 58b48fb1e1b958165a91
