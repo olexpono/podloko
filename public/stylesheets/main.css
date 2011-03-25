@@ -99,3 +99,53 @@ div.album dd {
 body {
   background: #444;
 }
+
+table#library {
+  margin-top: 5px;
+}
+table#library thead {
+  background: #222;
+  color: #EA4;
+  height: 18px;
+  border-radius: 0px 10px 0px 10px;
+}
+table#library th, table#library td{
+}
+table#library thead th{
+  font-size: 14px;
+  font-family: 'Ubuntu';
+  font-weight: 300;
+  padding: 10px;
+  border: 1px solid #EA4;
+}
+table#library thead th.first{
+  border-top-left-radius: 5px;
+}
+table#library thead th.last {
+  border-top-right-radius: 5px;
+  display: none;
+}
+
+table#library tbody#library-body {
+  background: #222;
+  color: #F2F5D0;
+}
+
+table#library tbody#library-body td {
+  mix-width: 250px;
+  min-width: 150px;
+  padding: 2px 2px 2px 15px;
+  border: #727560 solid 1px;
+}
+table#library tbody#library-body td.last {
+  display:none;
+}
+table#library tbody#library-body .ui-selected {
+  color: #EA4;
+  border: #EA4 solid 1px;
+}
+table#library tbody#library-body .ui-selecting {
+  color: #222;
+  background: #EA4;
+}
+

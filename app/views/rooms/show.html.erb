@@ -1,4 +1,9 @@
 <% content_for :title, "#{@room.name} | PodLoko iPod Control" %>
+<% content_for :head_js do %>
+  <%= javascript_include_tag('jquery.tablesorter.min.js') %>
+  <%= javascript_include_tag('jquery-ui.min.js') %>
+  <%= javascript_include_tag('tablesorter_filter.js') %>
+<% end %>
 <%= javascript_tag :defer => 'defer' do %>
   var pusher = new Pusher('58b48fb1e1b958165a91');
   var channel = pusher.subscribe('willowtree');
@@ -7,8 +12,15 @@
   });
   $(document).ready(function() 
     { 
-        $("#library").tablesorter( {sortList: [[0,0], [1,0]]} ); 
-    } 
+        $("#library")
+          .tablesorter( {sortList: [[0,0], [1,0]]} )
+          .tablesorterFilter({filterContainer: $("#library-filter-box"),
+                              filterColumns: [0,1,2,3],
+                              filterCaseSensitive: false});
+        $( "#library-body" ).selectable({
+          filter: "tr"
+        });        
+    }
   );
 <% end %>
 <h1>Room <%= @room.name %></h1>
@@ -20,13 +32,18 @@
     <li>Stop Playback</li>
   <% end %>
 </ul>
+<div class="library-container">
+  <ul class="library-filter-controls">
+    <input id="library-filter-box" placeholder="Search..."></input>
+  </ul>
 <table id="library" class="tablesorter">
 <thead>
   <tr>
-    <th>Artist</th>
+    <th class="first">Artist</th>
     <th>Album</th>
     <th>Name</th>
     <th>Time</th>
+    <th class="last">Persistent ID</th>
   </tr>
 </thead>
 <tbody id="library-body">
@@ -36,7 +53,9 @@
       <td><%= thash["album"] %></td>
       <td><%= thash["title"] %></td>
       <td><%= thash["duration"] %></td>
+      <td class="last"><%= thash["persistent_id"] %></td>
     </tr>
   <% end %>
 </tbody>
 </table>
+</div>
