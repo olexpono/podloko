@@ -132,7 +132,6 @@ table#library tbody#library-body {
 }
 
 table#library tbody#library-body td {
-  mix-width: 250px;
   min-width: 150px;
   padding: 2px 2px 2px 15px;
   border: #727560 solid 1px;
