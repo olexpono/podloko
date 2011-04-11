@@ -10,6 +10,20 @@
   channel.bind('stop', function(data) {
     alert(data);
   });
+
+  var track_ids_to_query = function(track_ids) {
+    var output = "";
+    var count = 0;
+    track_ids.each( function(index) {
+      if(count > 0) {
+        output += "&";
+      }
+      output += "track_ids[]=" + track_ids[index];
+      count++;
+    });
+    return output;
+  };
+
   $(document).ready(function() 
     { 
         $("#library")
@@ -20,22 +34,39 @@
         $( "#library-body" ).selectable({
           filter: "tr"
         });        
+        $("#play-pause").click( function(){
+          var selected_tracks = $("tr.ui-selected");
+          var permanent_ids = selected_tracks.map( function(tr_index) {
+            return selected_tracks[tr_index].children[4].innerHTML;
+          })
+          $.ajax({
+            url: "/rooms/<%= @room.name %>/play",
+            data: track_ids_to_query(permanent_ids)
+          });
+        });
     }
   );
 <% end %>
-<h1>Room <%= @room.name %></h1>
+<header class="top">
+  <h1><%= @room.name %></h1>
+  <h2>PodLoko</h2>
+</header>
+
 <ul class="controls">
+  <%= link_to "#" do %>
+    <span id="play-pause" class="play">Play</span>
+  <% end %>
+  <span id="skip-track" class="skip">Skip</span>
   <%= link_to request_library_update_room_path(@room) do %>
-    <li>Update Library</li>
+    <span id="update-lib" class="spin">Update Library</span>
   <% end %>
   <%= link_to stop_room_path(@room) do %>
-    <li>Stop Playback</li>
+    <span id="stop-all" class="stop">Stop Playback</span>
   <% end %>
+  <input id="library-filter-box" placeholder="Search..."></input>
 </ul>
+
 <div class="library-container">
-  <ul class="library-filter-controls">
-    <input id="library-filter-box" placeholder="Search..."></input>
-  </ul>
 <table id="library" class="tablesorter">
 <thead>
   <tr>

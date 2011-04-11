@@ -35,12 +35,12 @@ class RoomsController < ApplicationController
 
   def play
     @album = params[:album]
+    @track_ids = params[:track_ids] || []
     @room = Room.find_by_name(params[:id])
     if @room
-      Pusher[@room.name].trigger('play', {:album => @album})
+      Pusher[@room.name].trigger('play', {:track_ids => @track_ids})
     end
-    flash[:notice] = "Playing #{@album} on iPod"
-    redirect_to :action => :show
+    render :text => {"success" => true}.to_json
   end
 
   ### ACCESSED VIA PHONE (API) ###

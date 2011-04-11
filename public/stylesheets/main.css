@@ -1,7 +1,9 @@
 div#content {
   margin: 10px auto;
-  max-width: 956px;
   min-width: 500px;
+}
+body {
+  background: #444;
 }
 
 a {
@@ -22,6 +24,13 @@ h1, h2, h3 {
 
 h1 {
   font-size: 52px;
+}
+
+header.top h1 {
+  float:left;
+}
+header.top h2 {
+  float:right;
 }
 
 ul.rooms li {
@@ -59,55 +68,70 @@ ul.rooms li em {
   font-size: 13px;
 }
 
+ul.controls {
+  position: relative;
+  z-index: 1;
+  clear: both;
+  background: #222;
+  height: 38px;
+  -moz-box-shadow: 0px 0px 4px #111; 
+  -webkit-box-shadow: 0px 0px 4px #111; 
+  box-shadow: 0px 0px 6px #111; 
+}
+
 ul.controls li {
   display: inline-block;
-  border: 1px solid #EA4;
-  border-radius: 10px;
-  margin: 10px 0px;
-  padding: 10px 10px;
-  background: #222;
-  -moz-box-shadow: 0px 0px 4px #225; 
-  -webkit-box-shadow: 0px 0px 4px #225; 
-  box-shadow: 0px 0px 4px #225; 
+  margin: 10px;
   color: #EA4;
   font-family: 'Ubuntu';
   font-size: 14px;
 }
 
-div.album {
-  border: 1px solid #EA4;
-  border-radius: 10px;
-  margin: 10px 0px;
-  padding: 10px 10px;
-  background: #222;
-  -moz-box-shadow: 0px 0px 4px #225; 
-  -webkit-box-shadow: 0px 0px 4px #225; 
-  box-shadow: 0px 0px 4px #225; 
-  color: #EA4;
-}
-div.album dt {
-  font-size: 16px;
-  font-family: 'Ubuntu';
-  margin-bottom: 10px;
-}
-div.album dd {
-  margin-bottom: 1px;
-  font-family: 'Ubuntu';
-  padding: 0 0 0 10px;
+ul.controls span {
+  float: left;
+  width: 30px;
+  height: 30px;
+  margin: 5px 10px 0px 10px;
+  overflow: hidden;
+  text-indent: -5000px;
 }
 
-body {
+ul.controls span.play {
+  background: url(/images/icons/36-circle-play.png) no-repeat;
+}
+
+ul.controls span.spin {
+  background: url(/images/icons/02-redo.png) no-repeat;
+}
+
+ul.controls span.stop {
+  background: url(/images/icons/38-circle-stop.png) no-repeat;
+}
+
+div.library-container {
+  position:relative;
   background: #444;
+  z-index: 0;
 }
 
+input#library-filter-box {
+  float: right;
+  width: 300px;
+  height: 24px;
+  background: #222;
+  color: #EA4;
+  border: 1px solid #444;
+  border-radius: 10px;
+  padding: 0 10px;
+  margin: 7px 5px 0px 0px;
+}
 table#library {
-  margin-top: 5px;
+  clear: both;
+  width: 100%;
 }
 table#library thead {
-  background: #222;
   color: #EA4;
   height: 18px;
-  border-radius: 0px 10px 0px 10px;
 }
 table#library th, table#library td{
 }
@@ -116,7 +140,8 @@ table#library thead th{
   font-family: 'Ubuntu';
   font-weight: 300;
   padding: 10px;
-  border: 1px solid #EA4;
+  border-left: #727560 solid 1px;
+  border-right: #727560 solid 1px;
 }
 table#library thead th.first{
   border-top-left-radius: 5px;
@@ -127,12 +152,10 @@ table#library thead th.last {
 }
 
 table#library tbody#library-body {
-  background: #222;
   color: #F2F5D0;
 }
 
 table#library tbody#library-body td {
-  min-width: 150px;
   padding: 2px 2px 2px 15px;
   border: #727560 solid 1px;
 }
