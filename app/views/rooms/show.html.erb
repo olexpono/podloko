@@ -8,7 +8,6 @@
   var pusher = new Pusher('58b48fb1e1b958165a91');
   var channel = pusher.subscribe('willowtree');
   channel.bind('stop', function(data) {
-    alert(data);
   });
 
   var track_ids_to_query = function(track_ids) {
