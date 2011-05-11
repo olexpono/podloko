@@ -8,7 +8,8 @@ class RoomsController < ApplicationController
   # shows the currently available songs from a given room's ipod
   def show
     @room = Room.find_by_name(params[:id])
-    @room_tracks = ActiveSupport::JSON.decode(@room.tracks_json || "[]")
+    @room_tracks = ActiveSupport::JSON.decode @room.tracks_json
+    @room_tracks ||= []
     respond_to do |wants|
       wants.html
       wants.json { render :text => @room.to_json }
